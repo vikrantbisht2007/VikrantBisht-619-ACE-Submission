@@ -1,0 +1,27 @@
+book = []
+author = []
+
+def add_books():
+    while True:
+        book_name = input("Enter the book name: ")
+        author_name = input("Enter the author name: ")
+        book.append(book_name)
+        author.append(author_name)
+        
+        while True:
+            choice = input("Do you want to add more? (Y/N): ")
+            if choice.upper() == 'Y':
+                break  # Break out of the inner loop to continue adding books
+            elif choice.upper() == 'N':
+                return  # Return from the function to stop adding books
+            else:
+                print("Invalid Choice! Please enter Y or N.")
+                # The inner loop continues, asking for choice again
+
+def view_books():
+    data = dict(zip(book, author))
+    print("Books Data =", data)
+
+add_books()
+print("-" * 10)
+view_books()
