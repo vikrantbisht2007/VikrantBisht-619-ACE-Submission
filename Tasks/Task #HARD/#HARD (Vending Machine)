@@ -97,4 +97,5 @@ cart.calculate_total()
 print("-" * 10)
 insert_money()
 
+print("Please Collect your items,Thank You")
 print('WE ARE HAPPY TO SERVE YOU')
