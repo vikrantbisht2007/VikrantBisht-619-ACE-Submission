@@ -1,8 +1,7 @@
 # List to store all books
 books = []
 
-def add_book():
-    """Add a new book to the collection"""
+def add_book():    #Add a new book to the collection
     title = input("Enter book title: ").strip()
     author = input("Enter author name: ").strip()
     
@@ -12,8 +11,7 @@ def add_book():
     else:
         print("Both title and author are required. Book not added.\n")
 
-def search_book():
-    """Search for a book by title"""
+def search_book():  #Search for a book by title
     search_term = input("Enter book title to search: ").strip().lower()
     
     if not search_term:
@@ -73,5 +71,4 @@ def main():
             print("Invalid choice. Please try again.\n")
 
 # Run the program
-if __name__ == "__main__":
-    main()
+main()
