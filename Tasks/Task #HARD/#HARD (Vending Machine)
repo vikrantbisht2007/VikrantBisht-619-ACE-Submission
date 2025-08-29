@@ -1,0 +1,100 @@
+print("Vending Machine")
+machine_items = ["Coke", "Water", "Chips"]
+prices = {"Coke": 25, "Water": 15, "Chips": 20}
+stock = {"Coke": 50, "Water": 50, "Chips": 30}
+total_amount = 0
+amount_inserted = 0
+
+def view_items():
+    print("The available items are:--")  # To view all the available items in the vending machine
+    print("The format is Item,Price,Stock")
+    for i in machine_items:
+        print(i, ":", prices[i], ":", stock[i])
+        
+class ShoppingCart:
+    def __init__(self):
+        self.items = {}  # Using dictionary to store items and quantities
+        self.items_list = [item.lower() for item in machine_items]
+    
+    def add_items(self):
+        while True:
+            choice = input("Enter the item you wish to put in your cart: ").title()  # Changed to title case
+            if choice.lower() not in self.items_list:
+                print("Invalid Choice")
+                continue
+                
+            try:
+                quantity = int(input(f"How many {choice} do you want? "))
+                if quantity <= 0:
+                    print("Please enter a valid quantity (at least 1)!")
+                    continue
+                    
+                # Check if requested quantity is available in stock
+                if quantity > stock[choice]:
+                    print(f"Sorry, only {stock[choice]} {choice} available. Cannot add to cart.")
+                    continue
+                    
+            except ValueError:
+                print("Please enter a valid number!")
+                continue
+                
+            # Add to cart or update quantity if already exists
+            if choice in self.items:
+                self.items[choice] += quantity
+            else:
+                self.items[choice] = quantity
+            
+            more = input("Do you want to add more items? (Y/N): ")
+            if more.upper() != 'Y':
+                break
+        
+        print("Current Cart:")
+        for item, qty in self.items.items():
+            print(f"{item}: {qty}")
+    
+    def calculate_total(self):  # Calculates the total amount of your selected cart items
+        global total_amount
+        total_amount = 0
+        for item, quantity in self.items.items():
+            total_amount += prices[item] * quantity
+        print(f"Total Amount: ₹{total_amount}")
+        return total_amount
+    
+def insert_money():  # Insert your money
+    global amount_inserted
+    print("Total to pay: ₹", total_amount)
+    
+    while amount_inserted < total_amount:
+        try:
+            money = int(input("Insert money (₹): "))
+            if money <= 0:
+                print("Please enter a valid amount!")
+                continue
+                
+            amount_inserted += money
+            balance_needed = total_amount - amount_inserted
+            
+            if balance_needed > 0:
+                print(f"Amount inserted: ₹{amount_inserted}")
+                print(f"Balance needed: ₹{balance_needed}")
+            else:
+                change = -balance_needed
+                print(f"Payment successful! Amount inserted: ₹{amount_inserted}")
+                if change > 0:
+                    print(f"Change returned: ₹{change}")
+                break
+                
+        except ValueError:
+            print("Please enter a valid number!")
+
+# Call the functions
+view_items()
+print("-" * 10)
+cart = ShoppingCart()
+cart.add_items()
+print("-" * 10)
+cart.calculate_total()
+print("-" * 10)
+insert_money()
+
+print('WE ARE HAPPY TO SERVE YOU')
