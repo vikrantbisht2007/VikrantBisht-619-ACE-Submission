@@ -2,8 +2,8 @@ def run_quiz():
     # Define the quiz questions and answers
     questions = [
         {
-            "question": "What is the capital of India?",
-            "options": ["A) Gujarat", "B) New Delhi", "C) Mumbai", "D) Uttrakhand"],
+            "question": "What is the capital of France?",
+            "options": ["A) London", "B) Paris", "C) Berlin", "D) Madrid"],
             "correct": "B"
         },
         {
