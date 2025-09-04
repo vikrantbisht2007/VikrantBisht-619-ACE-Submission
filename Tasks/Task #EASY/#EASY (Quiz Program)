@@ -18,7 +18,7 @@ def run_quiz():
         },
         {
             "question": "Who wrote 'Kafka On The Shore'?",
-            "options": ["A) Charles Dickens", "B) William Shakespeare", "C) Jane Austen", "D) Haruki Murakami"],
+            "options": ["A) Charles Dickens", "B) William Shakespeare", "C) Franz Kafka", "D) Haruki Murakami"],
             "correct": "D"
         },
         {
